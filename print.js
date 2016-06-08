@@ -27,7 +27,15 @@ module.exports = function (w, lines) {
     var caret = [];
     var msg = [];
 
-    caret.length = hlen + col - ws;
+    if (col < ws) {
+        head += line[col];
+        col = 0;
+
+    } else {
+        col -= ws;
+    }
+
+    caret.length = hlen + col;
     caret.push('^');
 
     msg.length = hlen;
